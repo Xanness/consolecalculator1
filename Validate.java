@@ -23,7 +23,7 @@ class Validate {
         if (isRoman(input1) ^ isRoman(input2)) {
             throw new RuntimeException("Different numeric systems");
         }
-        if (!isRoman(input1) && !isRoman(input2) && (!isStringInt(input1) || !isStringInt(input1))) {
+        if (!isRoman(input1) && !isRoman(input2) && (!isStringInt(input1) || !isStringInt(input2))) {
             throw new RuntimeException("Roman numerals out of bounds or numbers are not of type int");
         }
 

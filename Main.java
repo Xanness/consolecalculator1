@@ -23,6 +23,7 @@ public class Main {
         } else {
             op1Int = Integer.valueOf(op1);
             op2Int = Integer.valueOf(op2);
+            if (args.length > 3) throw new RuntimeException("Too many operands.");
             tempResult = makeTheCalculation(operator, op1Int, op2Int);
             result = Integer.toString(tempResult);
         }
@@ -47,13 +48,18 @@ public class Main {
         }
         return temp;
     }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.out.println("Enter operand1, operator and operand2 separated by space in one line:");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println(calc(input));
-        scanner.close();
+
+        while (!Thread.currentThread().isInterrupted()) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                String input = scanner.nextLine();
+                System.out.println(calc(input));
+            } catch (final RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
     }
 }
